@@ -49,6 +49,8 @@ module JIRA
       end
       http_conn = http_class.new(uri.host, uri.port)
       http_conn.use_ssl = @options[:use_ssl]
+      http_conn.set_debug_output($stdout) if @options[:http_debug]
+
       if @options[:use_client_cert]
         http_conn.cert = @options[:cert]
         http_conn.key = @options[:key]
